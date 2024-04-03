@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 
-def safe_print_list_integers(my_list=[], x=0):
-    item = 0
+def safe_print_integer(value):
     try:
-        while item is not x:
-           print("{:d}".format(my_list[item], end="")
-            counter += 1
-    except IndexError:
-        None
-    print()
-    return (item)
+        print("{:d}".format(int(value)))
+        return True
+    except ValueError:
+        return False
