@@ -3,11 +3,10 @@
 def safe_print_list_integers(my_list=[], x=0):
     counter = 0
     try:
-        for i in range(x):
-            if isinstance(my_list[i], int):
-                print("{:d}".format(my_list[i]), end="")
+        while counter is not x:
+                print("{:d}".format(my_list[counter]), end="")
                 counter = counter + 1
     except IndexError:
-        pass
+        None
     print()
     return (counter)
