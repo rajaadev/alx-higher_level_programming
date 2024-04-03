@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def safe_print_list_integers(my_list=[], x=0):
-    item, counter = 0, 0
+    counter = 0, 0
     try:
         for item in my_list:
             if counter < x and isinstance(item, int):
