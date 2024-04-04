@@ -2,9 +2,14 @@
 """ Square Module"""
 
 
+
 class Square:
     """define classe Square"""
 
     def __init__(self, size):
-        """constructor instance"""
+        """constructor instance.
+
+        Args:
+            size: lenght of square.
+        """
          self.__size = size
