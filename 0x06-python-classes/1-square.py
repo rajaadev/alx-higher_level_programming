@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """ Square Module"""
 
 
@@ -7,9 +8,9 @@ class Square:
     """define classe Square"""
 
     def __init__(self, size):
-        """constructor instance.
+        """constructor new instance.
 
         Args:
-            size: lenght of square.
+            size: lenght of new square.
         """
-         self.__size = size
+        self.__size = size
