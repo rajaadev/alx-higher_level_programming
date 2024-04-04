@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-#define Square class
+'''define Square class'''
 
 class Square:
     pass
