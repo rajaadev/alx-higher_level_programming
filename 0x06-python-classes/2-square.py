@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-""" MOdule : Square."""
+""" Module Square"""
 
 
 class Square:
-    """class square."""
+    """Class square"""
 
     def __init__(self, size=0):
         """Initialize a new Square.
