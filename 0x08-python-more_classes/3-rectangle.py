@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Define class Rectangle """
+
+
 class Rectangle:
     """Rectangle class"""
 
@@ -46,9 +48,14 @@ class Rectangle:
             return 0
         return 2 * (self.__width + self.__height)
 
-    def __str__(self):
-        """Returns a string representation rectangle"""
-        if self.__width != 0 or self.__height != 0:
-            string += "\n".join(["#" * self.__width
-                for j in range(self.__height)])
-        return string
+     def __str__(self):
+        """Returns a string representation of the rectangle"""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+        return "\n".join(["#" * self.__width
+            for _ in range(self.__height)])
+
+    def __repr__(self):
+        """Returns a representation of the rectangle"""
+        return "Rectangle({}, {})".format(self.__width,
+                self.__height)
