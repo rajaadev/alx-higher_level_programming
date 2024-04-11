@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""Defining a class Rectangle"""
+"""Define a class Rectangle"""
 
 
 class Rectangle:
     """Rectangle class"""
     def __init__(self, width=0, height=0):
         """Initializes a Rectangle instance."""
-        self.width = width
+        type(self).number_of_instances += 1
+	self.width = width
         self.height = height
 
     @property
@@ -39,25 +40,24 @@ class Rectangle:
 
     def area(self):
         """Calculates and returns area of the rectangle"""
-        return self.__width * self.__height
+        return (self.__width * self.__height)
 
     def perimeter(self):
         """Calculates and returns perimeter of the rectangle"""
         if self.__width == 0 or self.__height == 0:
             return (0)
-        return 2 * (self.__width + self.__height)
+        return (2 * (self.__width + self.__height))
 
     def __str__(self):
-        """Return the printable representation of the Rectangle.
-
-        Represents the rectangle with the # character.
+        """Return the # character.
         """
         if self.__width == 0 or self.__height == 0:
             return ("")
 
         rect = []
         for i in range(self.__height):
-            [rect.append(str(self.print_symbol)) for j in range(self.__width)]
+            [rect.append(str(self.print_symbol)) for j in
+		range(self.__width)]
             if i != self.__height - 1:
                 rect.append("\n")
         return ("".join(rect))
