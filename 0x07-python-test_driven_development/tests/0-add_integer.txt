@@ -9,16 +9,22 @@ Using ``add_integer(...)```
 ``add_integer(...)``` returns the addition of its two arguments.
 For numbers value is equivalent to using the ``+`` operator.
 
+::
+
     >>> add_integer = __import__('0-add_integer').add_integer
 
-    >>> add_integer(2)
-    100
+    >>> add_integer(2, -2)
+    0
+::
 
-    Note that floats are casted to ints before addition is performed.
+   >>>
+ Note that floats are casted to ints before addition is performed.
 
     >>> add_integer(0.8)
     98
 
+The function also works with floating-point values.
+::
     Test two integers:
 
     >>> add_integer(2, 3)
@@ -49,4 +55,4 @@ Test b not int or float:
 Test a None:
     >>> add_integer(None)
     Traceback (most recent call last):
-    TypeError: a must be an integer
+    TypeError: a must be an integern
