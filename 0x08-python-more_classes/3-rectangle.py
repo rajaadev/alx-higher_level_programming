@@ -1,21 +1,22 @@
 #!/usr/bin/python3
-"""Define Rectangle class."""
+"""Defining a class Rectangle"""
 
 
 class Rectangle:
-	"""
-	Rectangle class
-	"""
+    """Rectangle class"""
 	def __init__(self, width=0, height=0):
+		"""Initializes a Rectangle instance."""
 		self.width = width
 		self.height = height
 
 	@property
 	def width(self):
-		return (self.__width)
+		"""Getter for instance width"""
+		return self.__width
 
 	@width.setter
 	def width(self, value):
+		"""Setter for instance width"""
 		if not isinstance(value, int):
 			raise TypeError("width must be an integer")
 		if value < 0:
@@ -24,10 +25,12 @@ class Rectangle:
 
 	@property
 	def height(self):
-		return (self.__height)
+		"""Getter for instance height"""
+		return self.__height
 
 	@height.setter
 	def height(self, value):
+		"""Setter for instance height"""
 		if not isinstance(value, int):
 			raise TypeError("height must be an integer")
 		if value < 0:
@@ -35,15 +38,27 @@ class Rectangle:
 		self.__height = value
 
 	def area(self):
-		return (self.width * self.height)
+		"""Calculates and returns area of the rectangle"""
+		return self.__width * self.__height
 
 	def perimeter(self):
-		if self.__width == 0 or self.__height == 0
-			return (0)
-		else
-			return (2 * (self.width + self.height))
+        """Calculates and returns perimeter of the rectangle"""
+		if self.__width == 0 or self.__height == 0:
+			return 0
+		return 2 * (self.__width + self.__height)
 
 	def __str__(self):
-		if self.width == 0 or self.height == 0:
-			return ("")
-		return (('#' * self.__width + '\n') * self.__height)
+        	"""Return the rectangle with the # character."""
+        	if self.__width == 0 or self.__height == 0:
+            	return ""
+
+        	rect = []
+        	for i in range(self.__height):
+			[rect.append('#') for j in range(self.__width)]
+			if i != self.__height - 1:
+				rect.append("\n"
+			return "".join(rect)
+
+	def __repr__(self):
+		"""Return the string representation of the Rectangle."""
+		return "Rectangle({}, {})".format(self.__width, self.__height)
