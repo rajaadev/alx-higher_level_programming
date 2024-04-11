@@ -6,6 +6,7 @@ class Rectangle:
     """Rectangle class"""
     def __init__(self, width=0, height=0):
         """Initializes a Rectangle instance."""
+        type(self).number_of_instances += 1
         self.width = width
         self.height = height
 
