@@ -1,58 +1,112 @@
-Use file 0-add_integer.py 
--------------------------
+''0-add_integer.py`` module
+============================
 
-This module defines an integer addition function ``add_integer(a, b=98)``.
+Using ``add_integer``
+---------------------
 
-Using ``add_integer(...)```
----------------------------
-
-``add_integer(...)``` returns the addition of its two arguments.
-For numbers value is equivalent to using the ``+`` operator.
-
-::
+Import function from module:
 
     >>> add_integer = __import__('0-add_integer').add_integer
 
-    >>> add_integer(2, -2)
-    0
-::
+Test one int argument:
 
-   >>>
- Note that floats are casted to ints before addition is performed.
+    >>> add_integer(2)
+    100
 
-    >>> add_integer(0.8)
+Test one int argument and check default second:
+
+    >>> add_integer(0)
     98
 
-The function also works with floating-point values.
-::
-    Test two integers:
+Test one float:
 
-    >>> add_integer(2, 3)
-    5
+    >>> add_integer(122.9)
+    220
 
-    Test two floats:
+Test one negative float:
 
-    >>> add_integer(2.8, 0.2)
-    2
+    >>> add_integer(-95.3)
+    3
 
-Test Non-Numbers:
-----------------
+Test two integers:
 
-Note:
-``add_integer()`` expects that both arguments are either integers or floats.
-If either argument is a non-integer and non-float, a TypeError is raised:
+    >>> add_integer(10, 5)
+    15
 
-Test a not int or float:
-    >>> add_integer("hello")
+Test two big integers:
+
+    >>> add_integer(999999997, 999999999)
+    1999999996
+
+Test positive, negative integers:
+
+    >>> add_integer(34263476, -89234582395)
+    -89200318915
+
+Test negative, positive integers:
+
+    >>> add_integer(-13947690, 57234)
+    -13890456
+
+Test an integer and a float:
+
+    >>> add_integer(123, 7.907)
+    130
+
+Test a float and an integer:
+
+    >>> add_integer(234233.43545, 4352345)
+    4586578
+
+Test two floats:
+
+    >>> add_integer(0.5, 0.9)
+    0
+
+Add infinity:
+
+    >>> add_integer(float('inf'), float('-inf'))
     Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+Add nan:
+
+    >>> add_integer(0, float('nan'))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
+
+Test first arg invalid:
+
+    >>> add_integer("foo", 0)
+    Traceback (most recent call last):
+        ...
     TypeError: a must be an integer
 
-Test b not int or float:
-    >>> add_integer(2, "hello")
+Test second arg invalid:
+
+    >>> add_integer(123123, [])
     Traceback (most recent call last):
+        ...
     TypeError: b must be an integer
 
-Test a None:
-    >>> add_integer(None)
+Test both args invalid:
+
+    >>> add_integer(None, None)
     Traceback (most recent call last):
-    TypeError: a must be an integern
+        ...
+    TypeError: a must be an integer
+
+Test two strings:
+
+    >>> add_integer("foo", "bar")
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Test float overflow:
+    >>> add_integer(float('inf'), 0)
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
