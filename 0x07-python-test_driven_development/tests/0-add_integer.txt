@@ -41,7 +41,7 @@ Test two big integers:
 Test positive, negative integers:
 
     >>> add_integer(34263476, -89234582395)
-    -89200318915
+    -89200318919
 
 Test negative, positive integers:
 
@@ -65,7 +65,7 @@ Test two floats:
 
 Add infinity:
 
-    >>> add_integer(float('inf'), float('-inf'))
+    >>> add_inte,ger(float('inf'), float('-inf'))
     Traceback (most recent call last):
     ...
     OverflowError: cannot convert float infinity to integer
