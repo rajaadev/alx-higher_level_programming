@@ -1,0 +1,134 @@
+The ''5-text_indentation'' module
+---------------------------------
+
+Using ''text_indentation''
+-------------------------
+
+Import module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test cases:
+-----------
+1. No delimiters:
+    >>> text_indentation("Hello Holberton")
+    Hello Holberton
+
+2. String with spaces:
+    >>> text_indentation("Holberton          ")
+    Holberton
+
+3. String with leading spaces:
+    >>> text_indentation("        Holberton")
+    Holberton
+
+4. String with leading and trailing spaces:
+    >>> text_indentation("        Holberton          ")
+    Holberton
+
+5. Empty string:
+    >>> text_indentation("")
+
+6. String with only spaces:
+    >>> text_indentation("      ")
+
+7. Simple case with delimiter:
+    >>> text_indentation("Hello: Holberton")
+    Hello:
+    <BLANKLINE>
+    Holberton
+
+8. Delimiters with spaces:
+    >>> text_indentation("      ?:  :  ")
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    :
+
+9. Newline character:
+    >>> text_indentation("\n")
+    <BLANKLINE>
+
+10. Multiple newline characters:
+    >>> text_indentation("\n\n")
+    <BLANKLINE>
+    <BLANKLINE>
+
+11. String with newline:
+    >>> text_indentation("Hello\n\n")
+    Hello
+    <BLANKLINE>
+
+12. String with all delimiters:
+    >>> text_indentation("Hello: Holberton? school. fooo")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+13. String with all delimiters and spaces:
+    >>> text_indentation("Hello   :     Holberton    ?    school.    fooo")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+14. String with all delimiters and trailing spaces:
+    >>> text_indentation("Hello   :     Holberton    ?    school.    fooo     ")
+    Hello:
+    <BLANKLINE>
+    Holberton?
+    <BLANKLINE>
+    school.
+    <BLANKLINE>
+    fooo
+
+15. String with just delimiters:
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+
+16. String with leading spaces and delimiter:
+    >>> text_indentation("     ?   ")
+    ?
+    <BLANKLINE>
+
+17. Delimiter in the middle of the string:
+    >>> text_indentation("?Hello.")
+    ?
+    <BLANKLINE>
+    Hello.
+    <BLANKLINE>
+
+18. String with existing newlines:
+    >>> text_indentation("?\n\n.\n\n:")
+    ?
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    <BLANKLINE>
+    <BLANKLINE>
+    :
+
+19. None input:
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+20. Number input:
+    >>> text_indentation(33)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
