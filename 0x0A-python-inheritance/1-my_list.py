@@ -9,5 +9,4 @@ class MyList(list):
         """
         Method prints sorted list asc order.
         """
-        sorted_list = sorted(self)
-        print(sorted_list)
+        print(sorted(self))
