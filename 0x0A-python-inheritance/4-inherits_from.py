@@ -1,7 +1,10 @@
+
 #!/usr/bin/python3
-'''Module for is_kind_of_class method.'''
+'''Module for inherits_from method.'''
 
 
-def is_kind_of_class(obj, a_class):
-    '''Checks if an object is a subclass of a class.'''
-    return isinstance(obj, a_class) and type(obj) != a_class
+def inherits_from(obj, a_class):
+    '''object is a subclass of a class.'''
+
+    return isinstance(obj, a_class) and \
+           type(obj) != a_class
