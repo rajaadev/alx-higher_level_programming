@@ -4,9 +4,9 @@
 
 class MyList(list):
     '''MyList class.'''
-    
+
     def print_sorted(self):
         """
-        Method prints sorted list asc order.
+        Print sorted list in ascending order.
         """
         print(sorted(self))
