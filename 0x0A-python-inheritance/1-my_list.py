@@ -7,7 +7,7 @@ class MyList(list):
     
     def print_sorted(self):
         """
-        Method prints sorted list in ascending order.
+        Method prints sorted list asc order.
         """
         sorted_list = sorted(self)
         print(sorted_list)
