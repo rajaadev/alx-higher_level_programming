@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''Module for Rectangle class.'''
-from models.base import Base
+
+from base import Base
 
 
 class Rectangle(Base):
@@ -31,7 +32,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        self.validate_integer("height", value)
+    
         self.__height = value
 
     @property
@@ -41,7 +42,6 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        self.validate_integer("x", value, positive=False)
         self.__x = value
 
     @property
@@ -51,14 +51,4 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
-        self.validate_integer("y", value, positive=False)
         self.__y = value
-    
-    def validate_integer(self, name, value, positive=True):
-        '''Method for validating the value.'''
-        if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(name))
-        if positive and value <= 0:
-            raise ValueError("{} must be > 0".format(name))
-        elif not positive and value < 0:
-            raise ValueError("{} must be >= 0".format(name))
