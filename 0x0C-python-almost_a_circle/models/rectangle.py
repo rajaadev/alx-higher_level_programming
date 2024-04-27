@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Module for Rectangle class.'''
-
 from base import Base
 
 
@@ -54,3 +53,4 @@ class Rectangle(Base):
     def y(self, value):
         '''Set the y-coordinate of the rectangle.'''
         self.__y = value
+
