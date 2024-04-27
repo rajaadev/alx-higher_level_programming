@@ -53,3 +53,8 @@ class Rectangle(Base):
     def y(self, value):
         '''Set the y-coordinate of the rectangle.'''
         self.__y = value
+
+    def __str__(self):
+        '''Return string representation of the rectangle.'''
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,\
+ self.width, self.height)
