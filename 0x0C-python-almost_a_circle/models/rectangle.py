@@ -53,4 +53,3 @@ class Rectangle(Base):
     def y(self, value):
         '''Set the y-coordinate of the rectangle.'''
         self.__y = value
-
