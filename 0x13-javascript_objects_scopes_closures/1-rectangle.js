@@ -7,4 +7,3 @@ this.height = h;
 }
 
 module.exports = Rectangle;
-
