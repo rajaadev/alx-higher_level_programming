@@ -13,14 +13,25 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # Connect to MySQL database
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+    try:
+        # Connect to MySQL database
+        db = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=username,
+            passwd=password,
+            db=database
+        )
+     except MySQLdb.Error as e:
+        print("Error connecting to database: {}".format(e))
+        sys.exit(1)
 
     # Create a cursor to execute queries
     cursor = db.cursor()
 
-    # Execute the query to get all states with names starting with 'N'
-    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    # Execute query to get states with names starting with 'N'
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%'\
+            ORDER BY id ASC")
 
     # Fetch all the rows
     rows = cursor.fetchall()
