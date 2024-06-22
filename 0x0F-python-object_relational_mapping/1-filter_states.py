@@ -28,12 +28,12 @@ if __name__ == "__main__":
 
     cur = conn.cursor()
     cur.execute("SELECT * FROM states WHERE name LIKE 'N%'\
-            ORDER BY id ASC")
+            ORDER BY states. id ASC")
 
-    rows = cursor.fetchall()
+    rows = cur.fetchall()
 
     for row in rows:
         print(row)
 
-    cu.close()
+    cur.close()
     conn.close()
