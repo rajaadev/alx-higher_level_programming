@@ -1,49 +1,32 @@
 #!/usr/bin/python3
-
 """
-This script connects to a MySQL server and retrieves all states from the
-database hbtn_0e_0_usa. The results are sorted by id and displayed.
-
-Usage: ./0-select_states.py <username> <password> <database_name>
+A script that lists all states from the database hbtn_0e_0_usa
 """
 
+import sys
 import MySQLdb
 
-
-def main():
-    """
-    Main function to connect to MySQL, retrieve states, and display results.
-    """
-
-    # Get credentials and database name from arguments
+if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
-    try:
-        # Connect to MySQL server
-        db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+    # Connect to the MySQL server
+    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
 
-        # Create a cursor object
-        cursor = db.cursor()
+    # Create a cursor object
+    cursor = db.cursor()
 
-        # Execute query to select states sorted by id
-        cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
-        result = cursor.fetchall()
+    # Execute the query
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
-        # Print results
-        for row in result:
-            print(row)
+    # Fetch all the rows
+    rows = cursor.fetchall()
 
-    except MySQLdb.Error as err:
-        print("Error connecting to database:", err)
-    finally:
-        # Close cursor and database connection
-        if cursor:
-            cursor.close()
-        if db:
-            db.close()
+    # Print the rows
+    for row in rows:
+        print(row)
 
-
-if __name__ == "__main__":
-    main()
+    # Close the cursor and database connection
+    cursor.close()
+    db.close()
