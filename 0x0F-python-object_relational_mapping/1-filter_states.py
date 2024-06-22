@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 """
 Lists all states with a name starting with N (upper N)from 
-the database hbtn_0e_0_usa sorted in ascending order by states.id.
+the database hbtn_0e_0_usa sorted in ascending order by id.
 """
 
 import MySQLdb
 import sys
 
+
 if __name__ == "__main__":
 
-    # Get MySQL credentials and database name from command line arguments
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
     try:
-        # Connect to MySQL database
         db = MySQLdb.connect(
             host="localhost",
             port=3306,
