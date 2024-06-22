@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-
 """
-A script that lists all states from the database 
-hbtn_0e_0_usa sorted in ascending order by
+Lists all states from the database hbtn_0e_0_usa sorted in ascending order by
 states.id
 """
 import MySQLdb
@@ -10,16 +8,16 @@ import sys
 
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
     db_name = sys.argv[3]
 
     try:
         conn = MySQLdb.connect(
             host="localhost",
             port=3306,
-            user=username,
-            passwd=password,
+            user=mysql_username,
+            passwd=mysql_password,
             db=db_name,
             charset="utf8"
         )
