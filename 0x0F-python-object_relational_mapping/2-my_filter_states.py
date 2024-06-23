@@ -6,8 +6,8 @@ table of hbtn_0e_0_usa
 where name matches the argument.
 """
 
-import sys
-import MySQLdb
+import MySQLdb as db
+from sys import argv
 
 if __name__ == "__main__":
 db_connect = db.connect(host="localhost", port=3306,
