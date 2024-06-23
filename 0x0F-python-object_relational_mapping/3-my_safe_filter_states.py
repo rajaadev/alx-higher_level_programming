@@ -12,24 +12,16 @@ import MySQLdb as db
 from sys import argv
 
 if __name__ == "__main__":
-    # Get MySQL credentials and database name from command line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
+        db_connect = db.connect(host="localhost", port=3306,
+                            user=argv[1], passwd=argv[2], db=argv[3])
 
-    # Connect to MySQL database
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
-
-    # Create a cursor to execute queries
-    cursor = db.cursor()
-
-    # Execute the query to get states matching the argument using parameterized query
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cursor.execute(query, (state_name,))
+    db_cursor = db_connect.cursor()
+    db_cursor.execute(
+        "SELECT * FROM states WHERE name LIKE \
+                    BINARY %(name)s ORDER BY states.id ASC", {'name': argv[4]})
 
     # Fetch all the rows
-    rows = cursor.fetchall()
+    rows = db_cursor.fetchall()
 
     # Print each row
     for row in rows:
