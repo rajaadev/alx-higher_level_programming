@@ -20,10 +20,10 @@ class State(Base):
     Class attribute id representing a column of an auto-generated,
     unique integer, primary key
     """
-    id = Column(Integer,primary_key=True, nullable=False, autoincrement=True)
-
-    """
-    Class attribute name representing a column of a string
-    with maximum 128 characters, not null
-    """
+    id = Column(
+            Integer,
+            primary_key=True,
+            nullable=False,
+            autoincrement=True
+        )
     name = Column(String(128), nullable=False)
