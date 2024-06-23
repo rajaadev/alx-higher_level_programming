@@ -1,45 +1,40 @@
 #!/usr/bin/python3
 """
-A script that lists all cities of a given state from the database hbtn_0e_4_usa.
-The script takes 4 arguments: mysql username, mysql password, database name, and state name (SQL injection free!)
+A script that lists all cities of a given state
+from thedatabase hbtn_0e_usa
 The results are sorted in ascending order by cities.id.
 """
 
-import sys
-import MySQLdb
+import MySQLdb as db
+from sys import argv
 
 if __name__ == "__main__":
-    # Get MySQL credentials, database name, and state name from command-line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    state_name = sys.argv[4]
-
-    # Connect to MySQL database
-    db = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
-
-    # Create a cursor to execute queries
-    cursor = db.cursor()
-
-    # Execute the query to get all cities of the given state
-    query = """
-    SELECT GROUP_CONCAT(cities.name ORDER BY cities.id ASC)
-    FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name = %s
     """
-    cursor.execute(query, (state_name,))
+    Access to the database and get the cities
+    from the database.
+    """
 
-    # Fetch the result
-    result = cursor.fetchone()[0]
+    db_connect = db.connect(host="localhost", port=3306,
+                            user=argv[1], passwd=argv[2], db=argv[3])
 
-    # Print the result
-    if result:
-        print(result)
-    else:
-        print("No cities found for the given state.")
+    with db_connect.cursor() as db_cursor:
+        db_cursor.execute("""
+            SELECT
+                cities.id, cities.name
+            FROM
+                cities
+            JOIN
+                states
+            ON
+                cities.state_id = states.id
+            WHERE
+                states.name LIKE BINARY %(state_name)s
+            ORDER BY
+                cities.id ASC
+        """, {
+            'state_name': argv[4]
+        })
+        rows_selected = db_cursor.fetchall()
 
-    # Close the cursor and database connection
-    cursor.close()
-    db.close()
-
+    if rows_selected is not None:
+        print(", ".join([row[1] for row in rows_selected]))
