@@ -8,8 +8,8 @@ This time the script is safe from
 MySQL injections!
 """
 
-import sys
-import MySQLdb
+import MySQLdb as db
+from sys import argv
 
 if __name__ == "__main__":
     # Get MySQL credentials and database name from command line arguments
