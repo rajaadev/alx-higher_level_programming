@@ -12,29 +12,19 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     """
-    Access the database and get states
-    that contain the letter 'a'.
+    Access to the database and get a state
+    from the database.
     """
 
-    # Create the database URL
     db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
         argv[1], argv[2], argv[3])
 
-    # Create the engine
     engine = create_engine(db_url)
-    
-    # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
-    
-    # Create a session
+
     session = Session()
-    
-    # Query the database for states containing the letter 'a' and sort by id
-    states = session.query(State).filter(State.name.contains('a')).order_by(State.id).all()
-    
-    # Print the results
-    for state in states:
-        print(f'{state.id}: {state.name}')
-    
-    # Close the session
-    session.close()
+
+    states = session.query(State).filter(State.name.contains('a'))
+    if states is not None:
+        for state in states:
+            print('{0}: {1}'.format(state.id, state.name))
