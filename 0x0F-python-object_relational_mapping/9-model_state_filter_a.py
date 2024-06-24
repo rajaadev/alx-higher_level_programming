@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 This script lists all State objects
 that contain the letter `a`
@@ -28,3 +29,6 @@ if __name__ == "__main__":
     if states is not None:
         for state in states:
             print('{0}: {1}'.format(state.id, state.name))
+
+        # Close the session
+        session.close()
