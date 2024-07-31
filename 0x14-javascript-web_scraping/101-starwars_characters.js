@@ -2,13 +2,13 @@
 
 const request = require('request');
 
-// Movie ID from the command line arguments
+// Get the Movie ID from the command line arguments
 const movieId = process.argv[2];
 
 // Construct the API URL for the specified Movie ID
 const url = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
-// request to the Star Wars API
+// Make a GET request to the Star Wars API
 request(url, (error, response, body) => {
   if (error) {
     console.error(error);
@@ -27,32 +27,33 @@ request(url, (error, response, body) => {
   // Retrieve character URLs from the movie data
   const characterUrls = movie.characters;
 
-  // Function to fetch character names
+  // Use a Promise to handle asynchronous requests
   const fetchCharacterNames = (urls) => {
-    let count = 0;
-
-    urls.forEach((characterUrl) => {
-      request(characterUrl, (err, res, charBody) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-
-        // Parse the character response
-        const character = JSON.parse(charBody);
-        // Print the character's name
-        console.log(character.name);
-        count++;
-
-        // If this was the last character, exit the process
-        if (count === urls.length) {
-          process.exit(0);
-        }
+    const characterPromises = urls.map((characterUrl) => {
+      return new Promise((resolve, reject) => {
+        request(characterUrl, (err, res, charBody) => {
+          if (err) {
+            reject(err);
+          } else {
+            const character = JSON.parse(charBody);
+            resolve(character.name);
+          }
+        });
       });
     });
+
+    // Wait for all promises to resolve and print character names
+    Promise.all(characterPromises)
+      .then((names) => {
+        names.forEach((name) => {
+          console.log(name);
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   // Fetch the character names
   fetchCharacterNames(characterUrls);
 });
-
