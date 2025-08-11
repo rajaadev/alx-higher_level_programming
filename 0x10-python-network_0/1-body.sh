@@ -1,3 +1,3 @@
 #!/bin/bash
-# Affiche la taille en octets du corps de la réponse HTTP d'une URL donnée
-curl -s -o /dev/null -w '%{size_download}\n' "$1"
+# Envoie une requête GET et affiche le corps uniquement si le code HTTP est 200
+curl -s -w '%{http_code}' -o /tmp/body_$$ "http://$1" | grep -q '^200$' && cat /tmp/body_$$; rm /tmp/body_$$
