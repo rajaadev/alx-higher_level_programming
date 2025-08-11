@@ -3,6 +3,7 @@
 Module to find a peak in a list of unsorted integers.
 """
 
+
 def find_peak(list_of_integers):
     """
     Finds a peak element in the list using a binary search approach.
