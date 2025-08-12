@@ -6,4 +6,5 @@ class LockedClass:
 
     Prevents dynamically creating any other instance attributes.
     """
+
     __slots__ = ['first_name']
